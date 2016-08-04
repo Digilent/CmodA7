@@ -27,13 +27,13 @@ end RGB_controller;
 
 architecture Behavioral of RGB_controller is
 --counter signals
-	constant window: std_logic_vector(7 downto 0) := "11111111";
+	constant window: std_logic_vector(7 downto 0) := std_logic_vector(to_unsigned(50, 8));
 	signal windowcount: std_logic_vector(7 downto 0) := (others => '0');
 	
     constant deltacountMax: std_logic_vector(19 downto 0) := std_logic_vector(to_unsigned(1000000, 20));
 	signal deltacount: std_logic_vector(19 downto 0) := (others => '0');
 		
-    constant valcountMax: std_logic_vector(8 downto 0) := "101111111";
+    constant valcountMax: std_logic_vector(8 downto 0) := std_logic_vector(to_unsigned(500, 9));
     signal valcount: std_logic_vector(8 downto 0) := (others => '0');
 
 --color intensity signals

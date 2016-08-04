@@ -1,73 +1,96 @@
-2015.4:
- * Version 3.2
+2016.2:
+ * Version 5.3 (Rev. 1)
+ * Internal register bit update, no effect on customer designs.
+
+2016.1:
+ * Version 5.3
+ * Added Clock Monitor Feature as part of clocking wizard
+ * DRP registers can be directly written through AXI without resource utilization
+ * Changes to HDL library management to support Vivado IP simulation library
+
+2015.4.2:
+ * Version 5.2 (Rev. 1)
  * No changes
 
+2015.4.1:
+ * Version 5.2 (Rev. 1)
+ * No changes
+
+2015.4:
+ * Version 5.2 (Rev. 1)
+ * Internal device family change, no functional changes
+
 2015.3:
- * Version 3.2
- * Corrected the Alarm limits for VCCINT and VCCBRAM for -1L speedgrade devices.
+ * Version 5.2
  * IP revision number added to HDL module, library, and include file names, to support designs with both locked and upgraded IP instances
- * IP delivers only Verilog example design files.
+ * Port Renaming tab is hidden in the GUI in IP Integrator as this feature is not supported
+ * Phase alignment feature is removed for ultrascale PLL as primitve has limited capabilities of supporting this feature
+ * When clocking wizard is targetted on a board part, the frequency values that gets propagated to primary and secondary clocks are displayed in floating number format
+ * Example design and simulation files are delivered in verilog only
 
 2015.2.1:
- * Version 3.1
+ * Version 5.1 (Rev. 6)
  * No changes
 
 2015.2:
- * Version 3.1
- * Corrected the Alarm limits for VCCINT and VCCBRAM for -2L speedgrade devices.
+ * Version 5.1 (Rev. 6)
+ * No changes
 
 2015.1:
- * Version 3.0 (Rev. 7)
- * GUI Updates, no functional changes
+ * Version 5.1 (Rev. 6)
+ * Updated mmcm_pll_filter_lookup and mmcm_pll_lock_lookup functions in the header file for 7-Series and UltraScale devices
+ * Supported devices and production status are now determined automatically, to simplify support for future devices
 
 2014.4.1:
- * Version 3.0 (Rev. 6)
+ * Version 5.1 (Rev. 5)
  * No changes
 
 2014.4:
- * Version 3.0 (Rev. 6)
+ * Version 5.1 (Rev. 5)
  * Internal device family change, no functional changes
+ * updates related to the source selection based on board interface for zed board
 
 2014.3:
- * Version 3.0 (Rev. 5)
- * Added EXTERNAL_MUXADDR_ENABLE parameter to enable MUXADDR used for Dynamic Configuration for external mux mode
- * SIN, TRIANGLE and SQUARE stimulus generation in the range 0.1 KHz to 96 KHz. CSV file format to txt file conversion for simulation.
+ * Version 5.1 (Rev. 4)
+ * Option added to enable dynamic phase and duty cycle for resource optimization in AXI4-Lite interface
 
 2014.2:
- * Version 3.0 (Rev. 4)
- * Fixed issue with VCCBRAM channel enablement in INIT_48 for sequencer mode
+ * Version 5.1 (Rev. 3)
+ * Updated for AXI4-Lite interface locked status register address and bit mapping to align with the pg065
 
 2014.1:
- * Version 3.0 (Rev. 3)
+ * Version 5.1 (Rev. 2)
+ * Updated to use inverted output CLKOUTB 0-3 of Clocking Primitive based on requested 180 phase w.r.t. previous clock
  * Internal device family name change, no functional changes
- * Corrected GUI enablement option in Default sequencer mode
 
 2013.4:
- * Version 3.0 (Rev. 2)
- * No changes
+ * Version 5.1 (Rev. 1)
+ * Added support for Ultrascale devices
+ * Updated Board Flow GUI to select the clock interfaces
+ * Fixed issue with Stub file parameter error for BUFR output driver
 
 2013.3:
- * Version 3.0 (Rev. 2)
- * Updated AXI4 Streaming FIFO depth from [1:1017] to [7:1020]
- * Added check to disable invalid Vauxp/Vauxn pairs for x*7z010clg225 Zynq device
- * Defined Vp/Vn and Vauxp/Vauxn as bus interfaces, no functional change
- * Added option in GUI to provide relative path for sim file, no functional change
- * Added a summary tab in the GUI, no functional change
+ * Version 5.1
+ * Added AXI4-Lite interface to dynamically reconfigure MMCM/PLL
+ * Improved safe clock logic to remove glitches on clock outputs for odd multiples of input clock frequencies
+ * Fixed precision issues between displayed and actual frequencies
+ * Added tool tips to GUI
+ * Added Jitter and Phase error values to IP properties
  * Added support for Cadence IES and Synopsys VCS simulators
  * Reduced warnings in synthesis and simulation
  * Enhanced support for IP Integrator
 
 2013.2:
- * Version 3.0 (Rev. 1)
- * Fixed CRITICAL WARNING for clock constraints on DCLK
+ * Version 5.0 (Rev. 1)
+ * Fixed issue with clock constraints for multiple instances of clocking wizard
  * Updated Life-Cycle status of devices
 
 2013.1:
- * Version 3.0
+ * Version 5.0
  * Lower case ports for Verilog
- * Added AXI4STREAM interface support
+ * Added Safe Clock Startup and Clock Sequencing
 
-(c) Copyright 2011 - 2015 Xilinx, Inc. All rights reserved.
+(c) Copyright 2008 - 2016 Xilinx, Inc. All rights reserved.
 
 This file contains confidential and proprietary information
 of Xilinx, Inc. and is protected under U.S. and

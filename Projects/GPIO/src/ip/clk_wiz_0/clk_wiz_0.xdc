@@ -1,3 +1,4 @@
+
 # file: clk_wiz_0.xdc
 # 
 # (c) Copyright 2008 - 2013 Xilinx, Inc. All rights reserved.
@@ -54,6 +55,5 @@
 # Connect to input port when clock capable pin is selected for input
 create_clock -period 83.333 [get_ports clk_in1]
 set_input_jitter [get_clocks -of_objects [get_ports clk_in1]] 0.83333
-
 
 

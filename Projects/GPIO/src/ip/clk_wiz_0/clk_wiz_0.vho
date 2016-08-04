@@ -1,4 +1,6 @@
--- (c) Copyright 1995-2016 Xilinx, Inc. All rights reserved.
+
+-- 
+-- (c) Copyright 2008 - 2013 Xilinx, Inc. All rights reserved.
 -- 
 -- This file contains confidential and proprietary information
 -- of Xilinx, Inc. and is protected under U.S. and
@@ -44,68 +46,49 @@
 -- THIS COPYRIGHT NOTICE AND DISCLAIMER MUST BE RETAINED AS
 -- PART OF THIS FILE AT ALL TIMES.
 -- 
--- DO NOT MODIFY THIS FILE.
+------------------------------------------------------------------------------
+-- User entered comments
+------------------------------------------------------------------------------
+-- None
+--
+------------------------------------------------------------------------------
+--  Output     Output      Phase    Duty Cycle   Pk-to-Pk     Phase
+--   Clock     Freq (MHz)  (degrees)    (%)     Jitter (ps)  Error (ps)
+------------------------------------------------------------------------------
+-- clk_out1___100.000______0.000______50.0______479.872____668.310
+--
+------------------------------------------------------------------------------
+-- Input Clock   Freq (MHz)    Input Jitter (UI)
+------------------------------------------------------------------------------
+-- __primary______________12____________0.010
 
--- IP VLNV: xilinx.com:ip:xadc_wiz:3.2
--- IP Revision: 0
 
--- The following code must appear in the VHDL architecture header.
-
+-- The following code must appear in the VHDL architecture header:
 ------------- Begin Cut here for COMPONENT Declaration ------ COMP_TAG
-COMPONENT xadc_wiz_0
-  PORT (
-    di_in : IN STD_LOGIC_VECTOR(15 DOWNTO 0);
-    daddr_in : IN STD_LOGIC_VECTOR(6 DOWNTO 0);
-    den_in : IN STD_LOGIC;
-    dwe_in : IN STD_LOGIC;
-    drdy_out : OUT STD_LOGIC;
-    do_out : OUT STD_LOGIC_VECTOR(15 DOWNTO 0);
-    dclk_in : IN STD_LOGIC;
-    reset_in : IN STD_LOGIC;
-    vp_in : IN STD_LOGIC;
-    vn_in : IN STD_LOGIC;
-    vauxp4 : IN STD_LOGIC;
-    vauxn4 : IN STD_LOGIC;
-    vauxp12 : IN STD_LOGIC;
-    vauxn12 : IN STD_LOGIC;
-    channel_out : OUT STD_LOGIC_VECTOR(4 DOWNTO 0);
-    eoc_out : OUT STD_LOGIC;
-    alarm_out : OUT STD_LOGIC;
-    eos_out : OUT STD_LOGIC;
-    busy_out : OUT STD_LOGIC
-  );
-END COMPONENT;
--- COMP_TAG_END ------ End COMPONENT Declaration ------------
+component clk_wiz_0
+port
+ (-- Clock in ports
+  clk_in1           : in     std_logic;
+  -- Clock out ports
+  clk_out1          : out    std_logic;
+  -- Status and control signals
+  reset             : in     std_logic;
+  locked            : out    std_logic
+ );
+end component;
 
+-- COMP_TAG_END ------ End COMPONENT Declaration ------------
 -- The following code must appear in the VHDL architecture
 -- body. Substitute your own instance name and net names.
-
 ------------- Begin Cut here for INSTANTIATION Template ----- INST_TAG
-your_instance_name : xadc_wiz_0
-  PORT MAP (
-    di_in => di_in,
-    daddr_in => daddr_in,
-    den_in => den_in,
-    dwe_in => dwe_in,
-    drdy_out => drdy_out,
-    do_out => do_out,
-    dclk_in => dclk_in,
-    reset_in => reset_in,
-    vp_in => vp_in,
-    vn_in => vn_in,
-    vauxp4 => vauxp4,
-    vauxn4 => vauxn4,
-    vauxp12 => vauxp12,
-    vauxn12 => vauxn12,
-    channel_out => channel_out,
-    eoc_out => eoc_out,
-    alarm_out => alarm_out,
-    eos_out => eos_out,
-    busy_out => busy_out
-  );
--- INST_TAG_END ------ End INSTANTIATION Template ---------
-
--- You must compile the wrapper file xadc_wiz_0.vhd when simulating
--- the core, xadc_wiz_0. When compiling the wrapper file, be sure to
--- reference the VHDL simulation library.
-
+your_instance_name : clk_wiz_0
+   port map ( 
+   -- Clock in ports
+   clk_in1 => clk_in1,
+  -- Clock out ports  
+   clk_out1 => clk_out1,
+  -- Status and control signals                
+   reset => reset,
+   locked => locked            
+ );
+-- INST_TAG_END ------ End INSTANTIATION Template ------------
