@@ -1,3 +1,20 @@
+2016.2:
+ * Version 3.3
+ * No changes
+
+2016.1:
+ * Version 3.3
+ * Added DDR3 voltage levels for VCCDDRO Alarm.
+ * Enabled ADC Offset and Gain Calibration and the Sensor Offset and Gain Calibration enabled by default.
+
+2015.4.2:
+ * Version 3.2
+ * No changes
+
+2015.4.1:
+ * Version 3.2
+ * No changes
+
 2015.4:
  * Version 3.2
  * No changes
@@ -67,7 +84,7 @@
  * Lower case ports for Verilog
  * Added AXI4STREAM interface support
 
-(c) Copyright 2011 - 2015 Xilinx, Inc. All rights reserved.
+(c) Copyright 2011 - 2016 Xilinx, Inc. All rights reserved.
 
 This file contains confidential and proprietary information
 of Xilinx, Inc. and is protected under U.S. and

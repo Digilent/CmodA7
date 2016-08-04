@@ -1,10 +1,10 @@
--- Copyright 1986-2015 Xilinx, Inc. All Rights Reserved.
+-- Copyright 1986-2016 Xilinx, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
--- Tool Version: Vivado v.2015.4 (win64) Build 1412921 Wed Nov 18 09:43:45 MST 2015
--- Date        : Thu Apr 14 13:32:39 2016
+-- Tool Version: Vivado v.2016.2 (win64) Build 1577090 Thu Jun  2 16:32:40 MDT 2016
+-- Date        : Thu Aug 04 12:30:28 2016
 -- Host        : WK86 running 64-bit Service Pack 1  (build 7601)
 -- Command     : write_vhdl -force -mode funcsim
---               C:/Work/Github/Working/XADC/XADC.srcs/sources_1/ip/xadc_wiz_0/xadc_wiz_0_sim_netlist.vhdl
+--               C:/Work/Github/CmodA7/Projects/XADC/src/ip/xadc_wiz_0/xadc_wiz_0_sim_netlist.vhdl
 -- Design      : xadc_wiz_0
 -- Purpose     : This VHDL netlist is a functional simulation representation of the design and should not be modified or
 --               synthesized. This netlist cannot be used for SDF annotated simulation.
@@ -17,18 +17,18 @@ use UNISIM.VCOMPONENTS.ALL;
 entity xadc_wiz_0 is
   port (
     daddr_in : in STD_LOGIC_VECTOR ( 6 downto 0 );
-    dclk_in : in STD_LOGIC;
     den_in : in STD_LOGIC;
     di_in : in STD_LOGIC_VECTOR ( 15 downto 0 );
     dwe_in : in STD_LOGIC;
+    do_out : out STD_LOGIC_VECTOR ( 15 downto 0 );
+    drdy_out : out STD_LOGIC;
+    dclk_in : in STD_LOGIC;
     vauxp4 : in STD_LOGIC;
     vauxn4 : in STD_LOGIC;
     vauxp12 : in STD_LOGIC;
     vauxn12 : in STD_LOGIC;
     busy_out : out STD_LOGIC;
     channel_out : out STD_LOGIC_VECTOR ( 4 downto 0 );
-    do_out : out STD_LOGIC_VECTOR ( 15 downto 0 );
-    drdy_out : out STD_LOGIC;
     eoc_out : out STD_LOGIC;
     eos_out : out STD_LOGIC;
     alarm_out : out STD_LOGIC;
@@ -37,24 +37,22 @@ entity xadc_wiz_0 is
   );
   attribute NotValidForBitStream : boolean;
   attribute NotValidForBitStream of xadc_wiz_0 : entity is true;
-  attribute CORE_GENERATION_INFO : string;
-  attribute CORE_GENERATION_INFO of xadc_wiz_0 : entity is "xadc_wiz_0,xadc_wiz_v3_2_0,{component_name=xadc_wiz_0,enable_axi=false,enable_axi4stream=false,dclk_frequency=15,enable_busy=true,enable_convst=false,enable_convstclk=false,enable_dclk=true,enable_drp=true,enable_eoc=true,enable_eos=true,enable_vbram_alaram=false,enable_vccddro_alaram=false,enable_Vccint_Alaram=false,enable_Vccaux_alaram=false,enable_vccpaux_alaram=false,enable_vccpint_alaram=false,ot_alaram=false,user_temp_alaram=false,timing_mode=continuous,channel_averaging=None,sequencer_mode=on,startup_channel_selection=contineous_sequence}";
 end xadc_wiz_0;
 
 architecture STRUCTURE of xadc_wiz_0 is
-  signal NLW_inst_JTAGBUSY_UNCONNECTED : STD_LOGIC;
-  signal NLW_inst_JTAGLOCKED_UNCONNECTED : STD_LOGIC;
-  signal NLW_inst_JTAGMODIFIED_UNCONNECTED : STD_LOGIC;
-  signal NLW_inst_OT_UNCONNECTED : STD_LOGIC;
-  signal NLW_inst_ALM_UNCONNECTED : STD_LOGIC_VECTOR ( 6 downto 0 );
-  signal NLW_inst_MUXADDR_UNCONNECTED : STD_LOGIC_VECTOR ( 4 downto 0 );
-  attribute BOX_TYPE : string;
-  attribute BOX_TYPE of inst : label is "PRIMITIVE";
+  signal NLW_U0_JTAGBUSY_UNCONNECTED : STD_LOGIC;
+  signal NLW_U0_JTAGLOCKED_UNCONNECTED : STD_LOGIC;
+  signal NLW_U0_JTAGMODIFIED_UNCONNECTED : STD_LOGIC;
+  signal NLW_U0_OT_UNCONNECTED : STD_LOGIC;
+  signal NLW_U0_ALM_UNCONNECTED : STD_LOGIC_VECTOR ( 6 downto 0 );
+  signal NLW_U0_MUXADDR_UNCONNECTED : STD_LOGIC_VECTOR ( 4 downto 0 );
+  attribute box_type : string;
+  attribute box_type of U0 : label is "PRIMITIVE";
 begin
-inst: unisim.vcomponents.XADC
+U0: unisim.vcomponents.XADC
     generic map(
       INIT_40 => X"0000",
-      INIT_41 => X"210F",
+      INIT_41 => X"21AF",
       INIT_42 => X"0200",
       INIT_43 => X"0000",
       INIT_44 => X"0000",
@@ -92,7 +90,7 @@ inst: unisim.vcomponents.XADC
     )
         port map (
       ALM(7) => alarm_out,
-      ALM(6 downto 0) => NLW_inst_ALM_UNCONNECTED(6 downto 0),
+      ALM(6 downto 0) => NLW_U0_ALM_UNCONNECTED(6 downto 0),
       BUSY => busy_out,
       CHANNEL(4 downto 0) => channel_out(4 downto 0),
       CONVST => '0',
@@ -106,11 +104,11 @@ inst: unisim.vcomponents.XADC
       DWE => dwe_in,
       EOC => eoc_out,
       EOS => eos_out,
-      JTAGBUSY => NLW_inst_JTAGBUSY_UNCONNECTED,
-      JTAGLOCKED => NLW_inst_JTAGLOCKED_UNCONNECTED,
-      JTAGMODIFIED => NLW_inst_JTAGMODIFIED_UNCONNECTED,
-      MUXADDR(4 downto 0) => NLW_inst_MUXADDR_UNCONNECTED(4 downto 0),
-      OT => NLW_inst_OT_UNCONNECTED,
+      JTAGBUSY => NLW_U0_JTAGBUSY_UNCONNECTED,
+      JTAGLOCKED => NLW_U0_JTAGLOCKED_UNCONNECTED,
+      JTAGMODIFIED => NLW_U0_JTAGMODIFIED_UNCONNECTED,
+      MUXADDR(4 downto 0) => NLW_U0_MUXADDR_UNCONNECTED(4 downto 0),
+      OT => NLW_U0_OT_UNCONNECTED,
       RESET => '0',
       VAUXN(15 downto 13) => B"000",
       VAUXN(12) => vauxn12,

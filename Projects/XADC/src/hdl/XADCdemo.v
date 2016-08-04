@@ -86,9 +86,10 @@ module XADCdemo(
     //LED PWM
     //////////////////////////////////////////////////////////////////  
            
-    integer pwm_end = 4093;      
+    integer pwm_end = 4070;      
     wire [11:0] shifted_data;
-    assign shifted_data = data >> 4;
+    //filter out tiny noisy part of signal to achieve zero at ground
+    assign shifted_data = (data >> 4) & 12'hff0;
     
     integer pwm_count = 0;
     reg pwm_out = 0;
@@ -103,7 +104,8 @@ module XADCdemo(
             pwm_count=0;
         end
     end
-    assign led = shifted_data < pwm_count ? 1'b1 : 1'b0;
+    //ledrgb is active low
+    assign led = !(pwm_count < shifted_data ? 1'b1 : 1'b0);
     assign leg_g = 0;
     assign leg_b = 0;
     assign pio = led;

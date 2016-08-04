@@ -1,10 +1,10 @@
-// Copyright 1986-2015 Xilinx, Inc. All Rights Reserved.
+// Copyright 1986-2016 Xilinx, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
-// Tool Version: Vivado v.2015.4 (win64) Build 1412921 Wed Nov 18 09:43:45 MST 2015
-// Date        : Thu Apr 14 13:32:39 2016
+// Tool Version: Vivado v.2016.2 (win64) Build 1577090 Thu Jun  2 16:32:40 MDT 2016
+// Date        : Thu Aug 04 12:30:28 2016
 // Host        : WK86 running 64-bit Service Pack 1  (build 7601)
 // Command     : write_verilog -force -mode funcsim
-//               C:/Work/Github/Working/XADC/XADC.srcs/sources_1/ip/xadc_wiz_0/xadc_wiz_0_sim_netlist.v
+//               C:/Work/Github/CmodA7/Projects/XADC/src/ip/xadc_wiz_0/xadc_wiz_0_sim_netlist.v
 // Design      : xadc_wiz_0
 // Purpose     : This verilog netlist is a functional simulation representation of the design and should not be modified
 //               or synthesized. This netlist cannot be used for SDF annotated simulation.
@@ -12,40 +12,39 @@
 // --------------------------------------------------------------------------------
 `timescale 1 ps / 1 ps
 
-(* CORE_GENERATION_INFO = "xadc_wiz_0,xadc_wiz_v3_2_0,{component_name=xadc_wiz_0,enable_axi=false,enable_axi4stream=false,dclk_frequency=15,enable_busy=true,enable_convst=false,enable_convstclk=false,enable_dclk=true,enable_drp=true,enable_eoc=true,enable_eos=true,enable_vbram_alaram=false,enable_vccddro_alaram=false,enable_Vccint_Alaram=false,enable_Vccaux_alaram=false,enable_vccpaux_alaram=false,enable_vccpint_alaram=false,ot_alaram=false,user_temp_alaram=false,timing_mode=continuous,channel_averaging=None,sequencer_mode=on,startup_channel_selection=contineous_sequence}" *) 
 (* NotValidForBitStream *)
 module xadc_wiz_0
    (daddr_in,
-    dclk_in,
     den_in,
     di_in,
     dwe_in,
+    do_out,
+    drdy_out,
+    dclk_in,
     vauxp4,
     vauxn4,
     vauxp12,
     vauxn12,
     busy_out,
     channel_out,
-    do_out,
-    drdy_out,
     eoc_out,
     eos_out,
     alarm_out,
     vp_in,
     vn_in);
   input [6:0]daddr_in;
-  input dclk_in;
   input den_in;
   input [15:0]di_in;
   input dwe_in;
+  output [15:0]do_out;
+  output drdy_out;
+  input dclk_in;
   input vauxp4;
   input vauxn4;
   input vauxp12;
   input vauxn12;
   output busy_out;
   output [4:0]channel_out;
-  output [15:0]do_out;
-  output drdy_out;
   output eoc_out;
   output eos_out;
   output alarm_out;
@@ -70,17 +69,17 @@ module xadc_wiz_0
   wire vauxp4;
   wire vn_in;
   wire vp_in;
-  wire NLW_inst_JTAGBUSY_UNCONNECTED;
-  wire NLW_inst_JTAGLOCKED_UNCONNECTED;
-  wire NLW_inst_JTAGMODIFIED_UNCONNECTED;
-  wire NLW_inst_OT_UNCONNECTED;
-  wire [6:0]NLW_inst_ALM_UNCONNECTED;
-  wire [4:0]NLW_inst_MUXADDR_UNCONNECTED;
+  wire NLW_U0_JTAGBUSY_UNCONNECTED;
+  wire NLW_U0_JTAGLOCKED_UNCONNECTED;
+  wire NLW_U0_JTAGMODIFIED_UNCONNECTED;
+  wire NLW_U0_OT_UNCONNECTED;
+  wire [6:0]NLW_U0_ALM_UNCONNECTED;
+  wire [4:0]NLW_U0_MUXADDR_UNCONNECTED;
 
-  (* BOX_TYPE = "PRIMITIVE" *) 
+  (* box_type = "PRIMITIVE" *) 
   XADC #(
     .INIT_40(16'h0000),
-    .INIT_41(16'h210F),
+    .INIT_41(16'h21AF),
     .INIT_42(16'h0200),
     .INIT_43(16'h0000),
     .INIT_44(16'h0000),
@@ -115,8 +114,8 @@ module xadc_wiz_0
     .IS_DCLK_INVERTED(1'b0),
     .SIM_DEVICE("7SERIES"),
     .SIM_MONITOR_FILE("design.txt")) 
-    inst
-       (.ALM({alarm_out,NLW_inst_ALM_UNCONNECTED[6:0]}),
+    U0
+       (.ALM({alarm_out,NLW_U0_ALM_UNCONNECTED[6:0]}),
         .BUSY(busy_out),
         .CHANNEL(channel_out),
         .CONVST(1'b0),
@@ -130,11 +129,11 @@ module xadc_wiz_0
         .DWE(dwe_in),
         .EOC(eoc_out),
         .EOS(eos_out),
-        .JTAGBUSY(NLW_inst_JTAGBUSY_UNCONNECTED),
-        .JTAGLOCKED(NLW_inst_JTAGLOCKED_UNCONNECTED),
-        .JTAGMODIFIED(NLW_inst_JTAGMODIFIED_UNCONNECTED),
-        .MUXADDR(NLW_inst_MUXADDR_UNCONNECTED[4:0]),
-        .OT(NLW_inst_OT_UNCONNECTED),
+        .JTAGBUSY(NLW_U0_JTAGBUSY_UNCONNECTED),
+        .JTAGLOCKED(NLW_U0_JTAGLOCKED_UNCONNECTED),
+        .JTAGMODIFIED(NLW_U0_JTAGMODIFIED_UNCONNECTED),
+        .MUXADDR(NLW_U0_MUXADDR_UNCONNECTED[4:0]),
+        .OT(NLW_U0_OT_UNCONNECTED),
         .RESET(1'b0),
         .VAUXN({1'b0,1'b0,1'b0,vauxn12,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,vauxn4,1'b0,1'b0,1'b0,1'b0}),
         .VAUXP({1'b0,1'b0,1'b0,vauxp12,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,vauxp4,1'b0,1'b0,1'b0,1'b0}),

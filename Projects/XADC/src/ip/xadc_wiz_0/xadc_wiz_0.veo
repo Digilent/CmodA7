@@ -46,7 +46,7 @@
 // 
 // DO NOT MODIFY THIS FILE.
 
-// IP VLNV: xilinx.com:ip:xadc_wiz:3.2
+// IP VLNV: xilinx.com:ip:xadc_wiz:3.3
 // IP Revision: 0
 
 // The following must be inserted into your Verilog file for this
@@ -62,7 +62,6 @@ xadc_wiz_0 your_instance_name (
   .drdy_out(drdy_out),        // output wire drdy_out
   .do_out(do_out),            // output wire [15 : 0] do_out
   .dclk_in(dclk_in),          // input wire dclk_in
-  .reset_in(reset_in),        // input wire reset_in
   .vp_in(vp_in),              // input wire vp_in
   .vn_in(vn_in),              // input wire vn_in
   .vauxp4(vauxp4),            // input wire vauxp4
